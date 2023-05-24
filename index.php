@@ -16,7 +16,7 @@ $db_options = [
 if(!empty($_POST)) {
 	$request = $_POST;
 
-    // Запрос на токен
+    	// Запрос на токен
 	if ($request['get'] === 'token') {
 		
 		// Генерация токена
@@ -45,7 +45,7 @@ if(!empty($_POST)) {
 		echo 'need_token'; exit; 
 	}
 	
-	// Ищем token в БД
+    // Ищем token в БД
     $sql = 'SELECT 
                token
             FROM users 
@@ -83,9 +83,9 @@ if(!empty($_POST)) {
 		// Проверка на дублей
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "SELECT name
-				FROM
-				WHERE
-					name = :name";
+			FROM
+			WHERE
+			    name = :name";
 					
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
@@ -123,8 +123,8 @@ if(!empty($_POST)) {
 		
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "DELETE FROM `item`
-				WHERE
-					id = :id";
+			WHERE
+			    id = :id";
 					
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
@@ -159,12 +159,13 @@ if(!empty($_POST)) {
 		
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "UPDATE `item`
-				SET	
-					name = :name,
-					phone = :phone,
-					key = :key,
-					updated_at = NOW()
-				WHERE id = :id";
+			SET	
+			  name = :name,
+			  phone = :phone,
+			  key = :key,
+			  updated_at = NOW()
+			WHERE 
+			  id = :id";
 				
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
@@ -186,8 +187,9 @@ if(!empty($_POST)) {
 		
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "SELECT *
-				FROM `item`
-				WHERE id = :id";
+			FROM `item`
+			WHERE 
+			  id = :id";
 				
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
@@ -213,10 +215,10 @@ if(!empty($_POST)) {
 		
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "SELECT
-					name,
-					phone
-				FROM `item`
-				LIMIT :limBegin,:limEnd";
+			  name,
+			  phone
+			FROM `item`
+			LIMIT :limBegin,:limEnd";
 				
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
