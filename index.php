@@ -24,9 +24,9 @@ if(!empty($_POST)) {
 				
 		$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass, $db_options);    
 		$sql = "INSERT `users`
-					(`token`, `dt_token`)
-				VALUES 
-					(:token, NOW + INTERVAL :tokenLifeTime MINUTE)";
+			  (`token`, `dt_token`)
+			VALUES 
+			  (:token, NOW + INTERVAL :tokenLifeTime MINUTE)";
 					
 		$sth = $dbh->prepare($sql); 
 		$sth->execute(array(
